@@ -1,13 +1,8 @@
 const express = require('express');
+const routers = require('./routers');
 
 const app = express();
 
-app.use(express.json());
-
-app.get('/teste', (req, res) => {
-  res
-    .status(200)
-    .send({ mensagem: 'boas-vindas à API' });
-});
+routers(app);
 
 module.exports = app;
