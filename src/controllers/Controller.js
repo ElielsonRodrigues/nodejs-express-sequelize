@@ -16,16 +16,8 @@ class Controller {
 
     async findById(req, res) {
         try {
-            // Forma 1
-            /*
-            let getId = req.params.id
-            const data = await this.entityService.findById(getId);
-            */
-
-            //Forma 2
             const data = await this.entityService.findById(req.params.id);
             return res.status(200).json(data);
-
         } catch (error) {
             console.log(error);
         }
@@ -45,9 +37,9 @@ class Controller {
     async update(req, res) {
         try {
             const dataUpdate = await this.entityService.update(req.params.id, req.body);
-            let checkUpdate = dataUpdate[0] ? true : false;
+            let isUpdate = dataUpdate[0] ? true : false;
 
-            if (checkUpdate) {
+            if (isUpdate) {
                 return res.status(200).send({ message: `Atualizado com sucesso!` });
             } else {
                 return res.status(200).send({ message: `Não localizamos nenhum registro com Id: ${req.params.id} ` });
