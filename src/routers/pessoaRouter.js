@@ -11,4 +11,7 @@ router.post('/pessoas', (req, res) => pessoaController.create(req, res));
 router.put('/pessoas/:id', (req, res) => pessoaController.update(req, res));
 router.delete('/pessoas/:id', (req, res) => pessoaController.deleteById(req, res));
 
+/*Criando end-point especifico a parte que listas as matriculas por id do Estudante */
+router.get('/pessoas/:estudanteId/matriculas', (req, res) => pessoaController.findMatriculaByEstudanteId(req, res));
+
 module.exports = router;

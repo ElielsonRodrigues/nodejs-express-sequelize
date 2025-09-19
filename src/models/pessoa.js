@@ -9,7 +9,9 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: 'docente_id'
       });
       Pessoa.hasOne(models.Matricula, {
-        foreignKey: 'estudante_id'
+        foreignKey: 'estudante_id',
+        scope: { status: 'matriculado' }, /* RETIRANDO O SCOP TRAS TODAS AS MATRICULAS */
+        as: 'aulasMatriculadas' /*Ajuda nas associação mixins que sera usando em pessoa service */
       });
     }
   }
